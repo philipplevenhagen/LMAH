@@ -797,10 +797,14 @@ footer {
   .pil-grid { grid-template-columns: repeat(2,1fr) }
   .founder-grid, .founder-grid.reverse { grid-template-columns: 1fr; direction:ltr }
   .founder-grid.reverse .founder-portrait { order: -1 }
+  #founders { padding-bottom: 3rem }
+  #founders .founder-grid { padding-bottom: 2.5rem }
+  #catalogue .reveal[style*="grid-template-columns"] { display:block !important }
+  #catalogue .reveal[style*="grid-template-columns"] > div { margin-bottom: 1.5rem }
   .contact-grid { grid-template-columns: 1fr }
   footer { flex-direction: column; gap:1.2rem; text-align:center }
   .ft-links { justify-content:center }
-  .section { padding:5rem 1.5rem }
+  .section { padding:3rem 1.5rem }
   #trade-bar { padding:1rem 1.5rem }
   .tb-label { display:none }
   .tb-form { width:100% }
