@@ -53,6 +53,11 @@ nav {
   z-index: 100;
   background: var(--linen);
   border-bottom: 1px solid var(--divider);
+  transition: background .4s ease, border-color .4s ease;
+}
+nav.scrolled {
+  background: var(--ink);
+  border-bottom-color: rgba(255,255,255,.08);
 }
 .nav-inner {
   max-width: 1440px;
@@ -79,21 +84,33 @@ nav {
   text-decoration: none;
   transition: color .25s;
 }
+nav.scrolled .nav-inner a { color: rgba(238,234,226,.65) }
 .nav-inner a:hover { color: var(--burg) }
+nav.scrolled .nav-inner a:hover { color: var(--linen) }
 .nav-logo {
   text-align: center;
   font-family: 'Cormorant SC', serif;
-  font-size: 1.5rem;
+  font-size: 1.9rem;
   letter-spacing: .45em;
   color: var(--burg) !important;
   text-decoration: none;
   display: block;
+  transition: color .4s ease;
 }
+nav.scrolled .nav-logo { color: var(--linen) !important }
 .nav-cta {
   color: var(--burg) !important;
   border: 1px solid rgba(139,38,53,.35);
   padding: .38rem 1.1rem;
   transition: all .25s !important;
+}
+nav.scrolled .nav-cta {
+  color: var(--linen) !important;
+  border-color: rgba(238,234,226,.35) !important;
+}
+nav.scrolled .nav-cta:hover {
+  background: var(--linen);
+  color: var(--ink) !important;
 }
 .nav-cta:hover { background: var(--burg); color: var(--linen) !important }
 
@@ -800,7 +817,7 @@ footer {
 @media (max-width:800px) {
   .nav-left, .nav-right { display:none }
   .nav-inner { grid-template-columns: 1fr }
-  .nav-logo { font-size:1.2rem }
+  .nav-logo { font-size:1.5rem }
   .prod-grid { grid-template-columns: repeat(2,1fr) }
   .pil-grid { grid-template-columns: repeat(2,1fr) }
   .founder-grid, .founder-grid.reverse { grid-template-columns: 1fr; direction:ltr }
@@ -1441,6 +1458,14 @@ const obs = new IntersectionObserver(es => es.forEach(e => {
   if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
 }), {threshold: .08});
 document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+
+// Nav invert on scroll past hero
+const navEl = document.querySelector('nav');
+const heroEl = document.getElementById('hero');
+const navObserver = new IntersectionObserver(([e]) => {
+  navEl.classList.toggle('scrolled', !e.isIntersecting);
+}, { threshold: 0.05 });
+navObserver.observe(heroEl);
 
 const PW = 'LMAH2025';
 function chk() {
