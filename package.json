@@ -1,0 +1,8 @@
+{
+  "name": "lmah-fine-foods",
+  "version": "1.0.0",
+  "description": "LMAH Fine Foods — Wholesale Trade Website",
+  "scripts": {
+    "start": "npx serve ."
+  }
+}

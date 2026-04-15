@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Node
+node_modules/
+npm-debug.log*
+.npm
+
+# Vercel
+.vercel
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
